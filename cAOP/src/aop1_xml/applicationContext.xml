@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+<bean id='targetbean' class="aop1_xml.MessageBeanInpl">
+</bean>
+
+<bean id='advice' class="aop1_xml.LoggingAdvice"></bean>
+
+<bean id ='advice2' class="aop1_xml.LoggingSample"></bean>
+
+<aop:config>
+	<aop:pointcut expression="execution(public * aop1_xml.*.*Hello(..))" id="pointcut"/>
+	<aop:aspect id='aspect' ref='advice' order='2'>
+		<aop:before method="before" pointcut-ref="pointcut"/>
+		<aop:around method="around" pointcut-ref="pointcut"/>
+
+	</aop:aspect>
+	<aop:aspect id='aspect2' ref='advice2' order='1'>
+		<aop:before method="before" pointcut-ref="pointcut"/>
+		<aop:after-returning method="afterReturning" pointcut-ref="pointcut"/>
+
+	</aop:aspect>
+</aop:config>
+
+
+
+</beans>
