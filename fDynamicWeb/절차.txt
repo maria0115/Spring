@@ -1,0 +1,22 @@
+
+1. 컨트롤러 만들기
+	@Controller
+		<context:component-scan	~/>
+		
+2. 요청 매핑
+	@RequestMapping("요청명")
+
+3. 이전 화면에서 넘어오는 값은 함수의 인자에 지정 (변수명 맞추기)
+
+4. 뷰페이지 지정
+	(1) 리턴형이 String 인 경우
+	(2) 리턴형이 void 인 경우 - 요청명과 동일한 뷰페이지로 지정됨
+	(3) ModelAnd View의 setViewName() 이용
+	
+5. 뷰페이지 데이타 넘기기
+	(1) ModelAndView 객체
+	(2) Model 객체(*****리턴형이 아니라 인자에 지정)
+	(3) 자바의 Map 객체
+	(4) @ModelAttribute 이용
+	
+6. 뷰페이지 받은 데이타 출력 - EL(jstl) 출력
